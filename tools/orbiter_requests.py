@@ -14,7 +14,7 @@ from user_data.config import change_ip_url
 def get_user_rank_and_points_response(
         index: int,
         address: str,
-        session: requests.Session()
+        session: requests.Session
 ) -> RankAndPointResponse:
     change_ip = execute_change_ip(change_ip_url=change_ip_url)
     if change_ip:
@@ -26,7 +26,7 @@ def get_user_rank_and_points_response(
         return RankAndPointResponse.parse_obj(json.loads(response.content))
 
 
-def get_leaderboard_info_response(session: requests.Session()) -> LeaderboardInfoResponse:
+def get_leaderboard_info_response(session: requests.Session) -> LeaderboardInfoResponse:
     change_ip = execute_change_ip(change_ip_url=change_ip_url)
     if change_ip:
         logger.info(f"ip has been changed.")
@@ -40,7 +40,7 @@ def get_leaderboard_info_response(session: requests.Session()) -> LeaderboardInf
 def get_checkin_record_response(
         index: int,
         address: str,
-        session: requests.Session()
+        session: requests.Session
 ) -> CheckinRecordResponse:
     change_ip = execute_change_ip(change_ip_url=change_ip_url)
     if change_ip:
@@ -57,7 +57,7 @@ def post_checkin_response(
         address: str,
         chain_id: int,
         tx_hash: str,
-        session: requests.Session()
+        session: requests.Session
 ) -> CheckinPostResponse:
     change_ip = execute_change_ip(change_ip_url=change_ip_url)
     if change_ip:

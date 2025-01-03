@@ -98,7 +98,7 @@ def single_executor(acc: AccItem, total_address_count: int):
         logger.exception(e)
 
 
-def pool_executor(accs: [AccItem], workers_range: [], total_address_count: int):
+def pool_executor(accs: list[AccItem], workers_range: list, total_address_count: int):
     with concurrent.futures.ThreadPoolExecutor(
             max_workers=random.randint(workers_range[0], workers_range[1])
     ) as executor:

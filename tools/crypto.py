@@ -12,7 +12,7 @@ def pad_to_32_bytes(value):
     return value.rjust(64, '0')
 
 
-def sign_and_wait(w3: Web3, transaction: {}, private_key: str, timeout: int = 300):
+def sign_and_wait(w3: Web3, transaction: dict, private_key: str, timeout: int = 300):
     account = w3.eth.account.from_key(private_key)
     signed_txn = w3.eth.account.sign_transaction(transaction, private_key)
     try:
@@ -30,7 +30,7 @@ def sign_and_wait(w3: Web3, transaction: {}, private_key: str, timeout: int = 30
         logger.error(f"{account.address}: {e.args[0]}.")
 
 
-def get_gas(w3: Web3()):
+def get_gas(w3: Web3):
     latest_block = w3.eth.block_number
     fee_history = w3.eth.fee_history(1, latest_block, reward_percentiles=[50])
     base_fee_per_gas1 = fee_history['baseFeePerGas'][0]

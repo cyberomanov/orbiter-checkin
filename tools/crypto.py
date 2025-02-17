@@ -34,7 +34,7 @@ def get_gas(w3: Web3()):
     latest_block = w3.eth.block_number
     fee_history = w3.eth.fee_history(1, latest_block, reward_percentiles=[50])
     base_fee_per_gas1 = fee_history['baseFeePerGas'][0]
-    max_priority_fee_per_gas = int(fee_history['reward'][0][0])
+    max_priority_fee_per_gas = int(fee_history['reward'][0][0]) or 1
 
     max_fee_per_gas = int(base_fee_per_gas1 + max_priority_fee_per_gas * 1.1)
 

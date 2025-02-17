@@ -76,7 +76,7 @@ def checkin_tx(private_key: str, current_date: str, chain: ChainItem):
 
         gas_limit = int(w3.eth.estimate_gas({
             "from": account.address,
-            "to": chain.checkin_contract,
+            "to": w3.to_checksum_address(chain.checkin_contract),
             "value": 0,
             "data": data
         }) * gas_multiplier)
@@ -84,7 +84,7 @@ def checkin_tx(private_key: str, current_date: str, chain: ChainItem):
         transaction = {
             "chainId": chain.id,
             "from": account.address,
-            "to": chain.checkin_contract,
+            "to": w3.to_checksum_address(chain.checkin_contract),
             "value": 0,
             "data": data,
             "gas": gas_limit,
